@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="movies"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ movie?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="movie">
+    <ion-card-content>
+      <ion-img [src]="imageBaseUrl + '/w400/' + movie?.poster_path"></ion-img>
+    </ion-card-content>
+    <ion-card-header>
+      <ion-card-title>{{ movie?.title }}</ion-card-title>
+      <ion-card-subtitle>{{ movie?.tagline }}</ion-card-subtitle>
+      <ion-text color="tertiary">
+        <span *ngFor="let g of movie.genres; let isLast = last">
+          {{ g.name }}{{ isLast ? '.' : ' ' }}
+        </span>
+      </ion-text>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
